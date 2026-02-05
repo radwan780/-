@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>استوديو رضوان ميديا</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://aistudiocdn.com/@google/genai@^1.20.0",
+          "react/": "https://aistudiocdn.com/react@^19.1.1/",
+          "react": "https://aistudiocdn.com/react@^19.1.1",
+          "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+        }
+      }
+    </script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              slate: {
+                850: '#151f32',
+                900: '#0f172a',
+                950: '#020617',
+              },
+              primary: {
+                400: '#38bdf8', // Sky 400
+                500: '#0ea5e9', // Sky 500
+                600: '#0284c7', // Sky 600
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        --bg-dark: #020617;   /* Slate 950 */
+        --card-bg: #0f172a;   /* Slate 900 */
+        --border-color: #1e293b; /* Slate 800 */
+        --accent-color: #0ea5e9; /* Sky 500 */
+      }
+      
+      body {
+        background-color: var(--bg-dark);
+        /* Subtle dot pattern instead of grid for cleaner look */
+        background-image: radial-gradient(#1e293b 1px, transparent 1px);
+        background-size: 24px 24px;
+        color: #e2e8f0; /* Slate 200 */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .tech-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      /* Top highlight line for depth */
+      .tech-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.2), transparent);
+        opacity: 0.5;
+      }
+
+      .tech-input {
+         background: #1e293b; /* Slate 800 */
+         border: 1px solid #334155; /* Slate 700 */
+         color: #f1f5f9;
+         transition: all 0.2s ease;
+      }
+      
+      .tech-input:focus {
+          outline: none;
+          border-color: var(--accent-color);
+          box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2); /* Sky 500/20 */
+          background: #1e293b;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); /* Sky 600 -> Sky 700 */
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.1);
+      }
+      
+      .btn-primary::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); /* Lighter on hover */
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      
+      .btn-primary:hover::after {
+        opacity: 1;
+      }
+
+      .corner-accent {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-color: #475569; /* Slate 600 */
+        border-style: solid;
+        transition: border-color 0.3s;
+      }
+      .group:hover .corner-accent {
+        border-color: var(--accent-color);
+      }
+    </style>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
